@@ -64,6 +64,20 @@ Unsigned builds may be blocked: More info → Run anyway. Only run builds you pr
 - Prefer keys on the host machine; use an agent when needed
 - If you must carry keys: use an encrypted container and rotate keys if lost
 
+
+## Theme: Qinglan (青岚)
+
+Built-in Qinglan theme: deep teal/navy UI and terminal palette, clean cyan accents.
+
+### Enable
+
+1. Open **Settings → Themes**
+2. Select **青岚 Qinglan** and apply
+3. (Optional) **Settings → Terminal** → Terminal background → **🌊 青岚 Qinglan**
+4. (Optional) Tune **Blur** (about 6–12) and **Opacity** (about 0.35–0.6) for a soft dim/frosted look
+
+The background is a bundled static CSS gradient layer (no video, no third-party images). Theme/background changes apply at runtime; no rebuild needed for selecting them. Rebuild only if you changed source and need a new portable package.
+
 ## Develop
 
 ```bash

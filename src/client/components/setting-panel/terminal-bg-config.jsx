@@ -7,7 +7,8 @@ import {
 } from 'antd'
 import {
   noTerminalBgValue,
-  textTerminalBgValue
+  textTerminalBgValue,
+  qinglanBgValue
 } from '../../common/constants'
 import defaultSettings from '../../common/default-setting'
 import NumberConfig from './number-config'
@@ -89,6 +90,10 @@ export default function TerminalBackgroundConfig ({
       {
         value: 'randomShape',
         desc: `🎨 ${e('randomShape')}`
+      },
+      {
+        value: qinglanBgValue,
+        desc: '🌊 青岚 Qinglan'
       }
     )
   }
@@ -225,7 +230,8 @@ export default function TerminalBackgroundConfig ({
     value !== noTerminalBgValue &&
     value !== textTerminalBgValue &&
     value !== 'index' &&
-    value !== 'randomShape'
+    value !== 'randomShape' &&
+    value !== qinglanBgValue
 
   // A `bg-img-setting` wrapper is what makes this sit in the same inline-block
   // row as the filter inputs below (see setting.styl), rather than a Switch

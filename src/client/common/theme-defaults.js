@@ -101,6 +101,50 @@ const defaultThemeDarkTerminal = () => {
   }
 }
 
+
+const qinglanUi = () => {
+  return parsor(`
+main=#0a1e28
+main-dark=#06141c
+main-light=#143642
+text=#c8e6e8
+text-light=#e8f7f8
+text-dark=#7aa8b0
+text-disabled=#5a7a82
+primary=#2ec4d6
+info=#5eead4
+success=#34d399
+error=#f87171
+warn=#fbbf24
+  `)
+}
+
+const qinglanTerminal = () => {
+  return {
+    foreground: '#d2eef0',
+    background: '#0a1e28',
+    cursor: '#5eead4',
+    cursorAccent: '#0a1e28',
+    selectionBackground: 'rgba(46, 196, 214, 0.35)',
+    black: '#0d2a34',
+    red: '#f87171',
+    green: '#34d399',
+    yellow: '#fbbf24',
+    blue: '#38bdf8',
+    magenta: '#a78bfa',
+    cyan: '#2ec4d6',
+    white: '#c8e6e8',
+    brightBlack: '#4a7080',
+    brightRed: '#fca5a5',
+    brightGreen: '#6ee7b7',
+    brightYellow: '#fcd34d',
+    brightBlue: '#7dd3fc',
+    brightMagenta: '#c4b5fd',
+    brightCyan: '#67e8f9',
+    brightWhite: '#f0fdfa'
+  }
+}
+
 export const defaultThemeId = 'default'
 export const defaultThemeLightId = 'defaultLight'
 
@@ -119,5 +163,18 @@ export function defaultThemeLight () {
     name: 'default light',
     themeConfig: defaultThemeLightTerminal(),
     uiThemeConfig: defaultThemeLightFunc()
+  }
+}
+
+
+export const qinglanThemeId = 'qinglan'
+
+/** Built-in cyan–teal theme (青岚). Soft navy UI + cyan accents. */
+export function qinglanTheme () {
+  return {
+    id: qinglanThemeId,
+    name: '青岚 Qinglan',
+    themeConfig: qinglanTerminal(),
+    uiThemeConfig: qinglanUi()
   }
 }
