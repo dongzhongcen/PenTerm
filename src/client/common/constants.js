@@ -2,7 +2,7 @@
  * constants
  */
 import { isMacJs } from './platform.js'
-import { defaultThemeId, defaultThemeLightId } from './theme-defaults.js'
+import { defaultThemeId, defaultThemeLightId, qinglanThemeId } from './theme-defaults.js'
 import logoPath1Ref from '@electerm/electerm-resource/res/imgs/electerm-round-128x128.png'
 import logoPath2Ref from '@electerm/electerm-resource/res/imgs/electerm.png'
 import logoPath3Ref from '@electerm/electerm-resource/res/imgs/electerm-watermark.png'
@@ -269,7 +269,7 @@ export const settingAiId = 'setting-ai'
 export const settingCommonId = 'setting-common'
 export const settingPasswordsId = 'setting-passwords'
 // Built in items the user is not allowed to delete: the two settings tabs,
-// the default bookmark group and the two built in terminal themes.
+// the default bookmark group and the built in terminal themes.
 // Keep this an explicit id list. A prefix test like `id.startsWith('default')`
 // would also cover user facing seeds (default quick commands, default local
 // terminal bookmarks) that the user must be able to remove.
@@ -278,8 +278,12 @@ export const undeletableIds = new Set([
   settingCommonId,
   defaultBookmarkGroupId,
   defaultThemeId,
-  defaultThemeLightId
+  defaultThemeLightId,
+  qinglanThemeId
 ])
+
+/** Built-in static cyan–teal gradient terminal background (CSS, no image file). */
+export const qinglanBgValue = 'qinglan'
 // settings that only apply to the desktop (electron) app,
 // hidden when window.et.isWebApp is true
 export const webAppHiddenSettings = [

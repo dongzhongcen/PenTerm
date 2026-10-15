@@ -320,7 +320,8 @@ describe('built in seed items stay deletable', () => {
       'settingCommonId',
       'defaultBookmarkGroupId',
       'defaultThemeId',
-      'defaultThemeLightId'
+      'defaultThemeLightId',
+      'qinglanThemeId'
     ]) {
       assert.ok(constantsSrc.includes(id), `${id} should be undeletable`)
     }
@@ -332,7 +333,8 @@ describe('built in seed items stay deletable', () => {
       'setting-sync',
       'setting-common',
       'default',
-      'defaultLight'
+      'defaultLight',
+      'qinglan'
     ])
     const seededIds = [
       ...entry('quickCommands').data.map(q => q._id),

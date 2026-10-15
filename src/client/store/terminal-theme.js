@@ -8,18 +8,21 @@ import {
 import { convertTheme } from '../common/terminal-theme'
 import {
   defaultTheme,
-  defaultThemeLight
+  defaultThemeLight,
+  qinglanTheme
 } from '../common/theme-defaults'
 
 export default Store => {
   Store.prototype.getTerminalThemes = function () {
     const t1 = defaultTheme()
     const t2 = defaultThemeLight()
+    const t3 = qinglanTheme()
     return [
       t1,
       t2,
+      t3,
       ...window.store.getItems(settingMap.terminalThemes).filter(d => {
-        return d && d.id !== t1.id && d.id !== t2.id
+        return d && d.id !== t1.id && d.id !== t2.id && d.id !== t3.id
       })
     ]
   }
@@ -54,12 +57,16 @@ export default Store => {
     return themes.map(t => {
       const d1 = defaultTheme()
       const d2 = defaultThemeLight()
+      const d3 = qinglanTheme()
       const isDefaultTheme = t.id === d1.id
       const isDefaultThemeLight = t.id === d2.id
+      const isQinglan = t.id === d3.id
       if (isDefaultTheme) {
         Object.assign(t, d1)
       } else if (isDefaultThemeLight) {
         Object.assign(t, d2)
+      } else if (isQinglan) {
+        Object.assign(t, d3)
       } else if (!t.uiThemeConfig) {
         t.uiThemeConfig = d1.uiThemeConfig
       }
