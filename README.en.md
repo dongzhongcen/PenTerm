@@ -93,7 +93,7 @@ With the Qinglan theme, sidebar, tab bar, setting panel and Connection Center be
 
 ### App wallpaper
 
-Settings → Common lets you pick a local image as the background of the whole UI, with blur and dim sliders. With the Qinglan glass effect the panels blur over your picture. Clear it to return to the Qinglan gradient.
+Settings → Common lets you pick a local image as the background of the whole UI, with blur and dim sliders. With the Qinglan glass effect the panels blur over your picture. The image is copied into the app data folder (moves with the portable folder); Clear deletes the copy and returns to the Qinglan gradient.
 
 ## Develop
 
