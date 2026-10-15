@@ -91,6 +91,10 @@ Click the Connection Center (cluster) icon in the left icon bar:
 
 With the Qinglan theme, sidebar, tab bar, setting panel and Connection Center become translucent frosted glass over the Qinglan gradient. Toggle "Glass effect for Qinglan theme" in Settings → Common (on by default).
 
+### App wallpaper
+
+Settings → Common lets you pick a local image as the background of the whole UI, with blur and dim sliders. With the Qinglan glass effect the panels blur over your picture. Clear it to return to the Qinglan gradient.
+
 ## Develop
 
 ```bash

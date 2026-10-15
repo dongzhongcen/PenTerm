@@ -9,6 +9,7 @@ import message from '../common/message'
 import { notification } from '../common/notification'
 import SwitchLabel from '../common/switch'
 import ccT from '../connection-center/i18n'
+import AppWallpaperSetting from './app-wallpaper-setting'
 import {
   Select,
   Button,
@@ -595,6 +596,10 @@ export default class SettingCommon extends Component {
             onChange={v => this.onChangeValue(v, 'qinglanGlass')}
           />
         </div>
+        <AppWallpaperSetting
+          config={this.props.config}
+          onChangeValue={(v, n) => this.onChangeValue(v, n)}
+        />
         {
           window.et.isWebApp ? null : <InstallCommand />
         }

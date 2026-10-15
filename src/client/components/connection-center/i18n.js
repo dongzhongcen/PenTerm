@@ -24,7 +24,13 @@ const zh = {
   star: '收藏/取消收藏',
   empty: '暂无书签',
   latency: '延迟',
-  glass: '青岚主题毛玻璃效果'
+  glass: '青岚主题毛玻璃效果',
+  wallpaper: '应用背景图片（整个界面）',
+  chooseImage: '选择图片',
+  clear: '清除',
+  wallpaperNone: '未设置（使用青岚渐变）',
+  wallpaperBlur: '背景模糊',
+  wallpaperDim: '背景变暗'
 }
 
 const en = {
@@ -49,7 +55,13 @@ const en = {
   star: 'Star / unstar',
   empty: 'No bookmarks',
   latency: 'Latency',
-  glass: 'Glass effect for Qinglan theme'
+  glass: 'Glass effect for Qinglan theme',
+  wallpaper: 'App wallpaper (whole UI)',
+  chooseImage: 'Choose image',
+  clear: 'Clear',
+  wallpaperNone: 'Not set (Qinglan gradient)',
+  wallpaperBlur: 'Wallpaper blur',
+  wallpaperDim: 'Wallpaper dim'
 }
 
 export function isZh () {

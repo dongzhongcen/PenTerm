@@ -21,6 +21,10 @@ export default {
   terminalBackgroundImagePath: '',
   // glass panels when the qinglan theme is active
   qinglanGlass: true,
+  // app-wide wallpaper behind the whole UI
+  appWallpaperPath: '',
+  appWallpaperBlur: 0,
+  appWallpaperDim: 0.3,
   terminalBackgroundCoverMode: false,
   terminalBackgroundFilterOpacity: 1,
   terminalBackgroundFilterBlur: 0,
