@@ -12,11 +12,8 @@ export default function AppWallpaper ({ path, blur = 0, dim = 0 }) {
       setSrc('')
       return
     }
-    if (/^https?:\/\//.test(path)) {
-      setSrc(path)
-      return
-    }
-    window.fs.readFileAsBase64(path)
+    // config holds only a file name inside the app data wallpaper folder
+    window.fs.readWallpaperAsBase64(path)
       .then(c => alive && setSrc(c ? `data:image;base64,${c}` : ''))
       .catch(() => alive && setSrc(''))
     return () => { alive = false }

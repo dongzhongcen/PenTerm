@@ -17,7 +17,16 @@ export default function AppWallpaperSetting ({ config, onChangeValue }) {
             if (file.fileContent !== undefined) {
               return
             }
-            onChangeValue(file.filePath, 'appWallpaperPath')
+            const old = path
+            window.fs.importWallpaper(file.filePath)
+              .then(name => {
+                if (!name) return
+                onChangeValue(name, 'appWallpaperPath')
+                if (old && old !== name) {
+                  window.fs.removeWallpaper(old).catch(() => null)
+                }
+              })
+              .catch(err => window.store.onError(err))
           }}
         >
           <Button size='small'>{t('chooseImage')}</Button>
@@ -25,7 +34,10 @@ export default function AppWallpaperSetting ({ config, onChangeValue }) {
         <Button
           size='small'
           disabled={!path}
-          onClick={() => onChangeValue('', 'appWallpaperPath')}
+          onClick={() => {
+            onChangeValue('', 'appWallpaperPath')
+            window.fs.removeWallpaper(path).catch(() => null)
+          }}
         >
           {t('clear')}
         </Button>
