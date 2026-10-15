@@ -5,12 +5,16 @@
 const fss = require('fs/promises')
 const { resolve, extname, basename } = require('path')
 const crypto = require('crypto')
-const { appPath } = require('../common/app-props')
 
 const allowedExt = ['.png', '.jpg', '.jpeg', '.webp', '.gif', '.bmp', '.avif']
 
+function getAppPath () {
+  // lazy: avoid requiring electron before the main process is ready
+  return require('../common/app-props').appPath
+}
+
 function wallpaperDir () {
-  const dataPath = process.env.DATA_PATH || resolve(appPath, 'electerm')
+  const dataPath = process.env.DATA_PATH || resolve(getAppPath(), 'electerm')
   return resolve(dataPath, 'wallpaper')
 }
 
