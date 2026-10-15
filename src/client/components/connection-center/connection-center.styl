@@ -1,0 +1,48 @@
+.connection-center
+  display flex
+  height 70vh
+  min-height 300px
+  .cc-left
+    width 200px
+    flex-shrink 0
+    overflow-y auto
+    border-right 1px solid var(--main-darker)
+    padding-right 6px
+  .cc-right
+    flex 1
+    min-width 0
+    padding-left 12px
+    overflow hidden
+  .cc-group
+    display flex
+    justify-content space-between
+    padding 5px 12px
+    border-radius 6px
+    &:hover
+      background var(--main-dark)
+    &.active
+      background var(--primary)
+      color var(--primary-contrast)
+  .cc-group-title
+    overflow hidden
+    text-overflow ellipsis
+    white-space nowrap
+  .cc-count
+    opacity 0.7
+    margin-left 6px
+  .cc-sep
+    font-size 12px
+    opacity 0.6
+    padding 10px 12px 4px
+  .cc-star
+    color var(--text-disabled)
+    &.on
+      color #fbbf24
+  .cc-os-icon
+    vertical-align middle
+  .cc-copy
+    opacity 0.5
+    &:hover
+      opacity 1
+  .cc-desc
+    opacity 0.7

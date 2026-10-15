@@ -8,6 +8,7 @@ import {
 import message from '../common/message'
 import { notification } from '../common/notification'
 import SwitchLabel from '../common/switch'
+import ccT from '../connection-center/i18n'
 import {
   Select,
   Button,
@@ -587,6 +588,13 @@ export default class SettingCommon extends Component {
               !(isWin && name === 'useSystemTitleBar'))
             .map(this.renderToggle)
         }
+        <div className='pd2b'>
+          <SwitchLabel
+            checked={this.props.config.qinglanGlass !== false}
+            label={ccT('glass')}
+            onChange={v => this.onChangeValue(v, 'qinglanGlass')}
+          />
+        </div>
         {
           window.et.isWebApp ? null : <InstallCommand />
         }
