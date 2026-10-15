@@ -53,6 +53,7 @@ import LazyBoundary from '../common/lazy-boundary'
 import { isRemoteMonitorBarVisible } from '../remote-monitor/visibility'
 import '../../common/fs.js'
 import './term-fullscreen.styl'
+import './qinglan-glass.styl'
 
 const Resolutions = lazy(() => import('../rdp/resolution-edit'))
 const InfoModal = lazy(() => import('../sidebar/info-modal.jsx'))
@@ -176,7 +177,9 @@ export default auto(function Index (props) {
     'is-mobile': store.isMobile,
     'is-desktop': !store.isMobile,
     'is-touch-device': store.isTouchDevice,
-    'remote-monitor-bar-on': remoteMonitorBarVisible
+    'remote-monitor-bar-on': remoteMonitorBarVisible,
+    // glass panels over the qinglan gradient (setting: qinglanGlass)
+    'qinglan-glass': config.theme === 'qinglan' && config.qinglanGlass !== false
   })
   const ext1 = {
     className: cls,

@@ -19,6 +19,8 @@ export default {
   disableConnectionHistory: false,
   disableTransferHistory: false,
   terminalBackgroundImagePath: '',
+  // glass panels when the qinglan theme is active
+  qinglanGlass: true,
   terminalBackgroundCoverMode: false,
   terminalBackgroundFilterOpacity: 1,
   terminalBackgroundFilterBlur: 0,

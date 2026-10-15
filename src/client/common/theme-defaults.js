@@ -101,7 +101,6 @@ const defaultThemeDarkTerminal = () => {
   }
 }
 
-
 const qinglanUi = () => {
   return parsor(`
 main=#0a1e28
@@ -165,7 +164,6 @@ export function defaultThemeLight () {
     uiThemeConfig: defaultThemeLightFunc()
   }
 }
-
 
 export const qinglanThemeId = 'qinglan'
 
