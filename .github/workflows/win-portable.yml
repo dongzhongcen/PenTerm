@@ -1,0 +1,55 @@
+# Build Windows x64 portable tar.gz and upload as Actions artifact.
+# Manual only — private repo, no auto-publish.
+name: Windows Portable
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-2022
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js 24.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24.x
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          architecture: x64
+
+      - run: npm config set legacy-peer-deps true
+      - run: npm install -g node-gyp
+      - run: npm un node-pty serialport
+      - run: npm i
+      - run: npm i -S -E node-pty@1.1.0-beta14
+      - run: npm i -S -E serialport@13.0.0
+
+      - name: Compile app
+        run: npm run b
+
+      - name: Prepare electron-builder config
+        run: npm run pb
+
+      - name: Build Windows portable
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WORKFLOW_NAME: ${{ github.workflow }}
+          # Skip GitHub publish from electron-builder; we only need the artifact
+          CSC_IDENTITY_AUTO_DISCOVERY: "false"
+        run: node src/build/bin/build-win-portable.js
+
+      - name: Upload portable artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: PenTerm-win-x64-portable
+          path: |
+            dist/*portable*
+            dist/**/*portable*
+          if-no-files-found: warn
+          retention-days: 14

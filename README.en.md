@@ -1,0 +1,78 @@
+# PenTerm (portable terminal)
+
+[简体中文](./README.md)
+
+Personal portable SSH / SFTP terminal. Private fork of [electerm](https://github.com/electerm/electerm) (**MIT**). Not for public redistribution.
+
+## Attribution & license
+
+- Upstream: [electerm](https://github.com/electerm/electerm), author ZHAO Xudong
+- This repo keeps the full [LICENSE](./LICENSE) (MIT) and [NOTICE](./NOTICE)
+- v1 stays close to upstream; only light rebranding and Windows portable setup
+
+## MVP
+
+- SSH to remote servers
+- SFTP / file transfer
+- Multi-tab sessions
+
+## Windows portable (preferred)
+
+Unpack to a USB drive and double-click to run. In portable mode, config lives in a `penterm` folder next to the executable.
+
+### GitHub Actions (recommended)
+
+1. **Actions** → workflow **Windows Portable**
+2. **Run workflow**
+3. Download artifact `PenTerm-win-x64-portable` from the run
+
+This Linux box cannot fully cross-build Windows packages; use CI.
+
+### Build on Windows
+
+Requires Node.js 24.x, Python, and a native build toolchain.
+
+```bat
+npm config set legacy-peer-deps true
+npm install -g node-gyp
+npm un node-pty serialport
+npm i
+npm i -S -E node-pty@1.1.0-beta14
+npm i -S -E serialport@13.0.0
+npm run build-win-portable
+```
+
+Output under `dist/` as `PenTerm-*-win-x64-portable.tar.gz`. Extract and run `PenTerm.exe`.
+
+Equivalent steps: `npm run b` → `npm run pb` → `node src/build/bin/build-win-portable.js`.
+
+### USB usage
+
+1. Extract the archive to any folder on the USB drive
+2. Run `PenTerm.exe`
+3. A sibling `penterm` folder stores config and local data
+4. Move the drive to another PC and run from the same folder
+
+### Windows SmartScreen
+
+Unsigned builds may be blocked: More info → Run anyway. Only run builds you produced or from this private repo’s CI.
+
+## SSH key safety
+
+- Private keys are **not** bundled in the portable package by default; the app still uses `~/.ssh` on the host
+- **Do not** copy private keys into the on-USB `penterm` data folder unless you accept loss/theft risk
+- Prefer keys on the host machine; use an agent when needed
+- If you must carry keys: use an encrypted container and rotate keys if lost
+
+## Develop
+
+```bash
+npm i
+npm start
+```
+
+See `src/build/` and `.github/workflows/win-portable.yml`.
+
+## Version
+
+Started from electerm `5.6.10`. Product name **PenTerm**.

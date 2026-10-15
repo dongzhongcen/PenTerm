@@ -1,0 +1,14 @@
+PenTerm
+=======
+
+This project is a private, personal derivative of electerm.
+
+Upstream project
+----------------
+electerm — https://github.com/electerm/electerm
+License: MIT
+Copyright (c) since 2017~ ZHAO Xudong <zxdong@gmail.com>
+
+The original MIT license text is preserved in the LICENSE file.
+Substantial portions of this software are from electerm; all rights of the
+original author remain as stated in LICENSE.
