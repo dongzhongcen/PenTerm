@@ -304,12 +304,6 @@ const statCustom = async (...args) => {
   return st
 }
 
-const {
-  importWallpaper,
-  readWallpaperAsBase64,
-  removeWallpaper
-} = require('./wallpaper')
-
 const fsExport = Object.assign(
   {},
   fss,
@@ -327,9 +321,9 @@ const fsExport = Object.assign(
     openCustom,
     closeCustom,
     statCustom,
-    importWallpaper,
-    readWallpaperAsBase64,
-    removeWallpaper
+    importWallpaper: (...args) => require('./wallpaper').importWallpaper(...args),
+    readWallpaperAsBase64: (...args) => require('./wallpaper').readWallpaperAsBase64(...args),
+    removeWallpaper: (...args) => require('./wallpaper').removeWallpaper(...args)
   },
   {
     readdirAsync: (_path) => {
