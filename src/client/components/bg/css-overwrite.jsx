@@ -2,7 +2,7 @@
 * btns
 */
 import { useEffect, useRef } from 'react'
-import { noTerminalBgValue, textTerminalBgValue } from '../../common/constants'
+import { noTerminalBgValue, textTerminalBgValue, qinglanBgValue } from '../../common/constants'
 import { generateMosaicBackground } from './shapes'
 
 const themeDomId = 'css-overwrite-terminal-backgrounds'
@@ -20,6 +20,9 @@ function createBackgroundStyle (imagePath) {
   const isWebImg = /^https?:\/\//.test(imagePath)
   if (imagePath === 'randomShape') {
     st = `url(${generateMosaicBackground()})`
+  } else if (imagePath === qinglanBgValue || imagePath === 'qinglan') {
+    // Self-made abstract cyan–teal gradient (no external image asset).
+    st = 'linear-gradient(165deg, #061820 0%, #0a2a38 28%, #0d4a5c 58%, #0a6a78 82%, #1a8a9a 100%), radial-gradient(ellipse at 20% 80%, rgba(46, 196, 214, 0.22) 0%, transparent 55%), radial-gradient(ellipse at 85% 15%, rgba(56, 189, 248, 0.18) 0%, transparent 50%)'
   } else if (imagePath === 'index') {
     st = 'index'
   } else if (noTerminalBgValue === imagePath) {
