@@ -1,8 +1,8 @@
 // Glass panels for the qinglan theme. Only active when the root wrapper has
 // .qinglan-glass (theme === 'qinglan' and setting qinglanGlass on).
-// Panels stay mostly opaque so text keeps good contrast.
-glass-bg = rgba(8, 36, 48, 0.62)
-glass-bg-strong = rgba(8, 36, 48, 0.78)
+// Lower panel opacity so backdrop blur reads clearly over wallpaper/gradient.
+glass-bg = rgba(8, 36, 48, 0.40)
+glass-bg-strong = rgba(8, 36, 48, 0.52)
 glass-border = rgba(120, 220, 230, 0.16)
 
 .qinglan-glass
@@ -11,16 +11,26 @@ glass-border = rgba(120, 220, 230, 0.16)
   .sidebar-panel
   .tabs
   .main-footer
+  .terminal-control
     background glass-bg !important
-    backdrop-filter blur(14px) saturate(140%)
+    backdrop-filter blur(18px) saturate(140%)
     border-color glass-border
+  // Soften solid main chrome so the frosted look is obvious without killing contrast
+  .layout-wrap
+  .layout-item
+  .sessions
+  .terms-box
+  .term-wrap
+  .web-session-wrap
+  .no-session
+    background rgba(8, 36, 48, 0.28) !important
 
 body:has(.qinglan-glass)
   .setting-wrap
   .connection-center-modal .ant-modal-content
   .connection-center-modal .ant-modal-header
     background glass-bg-strong !important
-    backdrop-filter blur(18px) saturate(140%)
+    backdrop-filter blur(20px) saturate(140%)
   .connection-center-modal .ant-modal-content
     border 1px solid glass-border
   .connection-center-modal .ant-table
@@ -29,10 +39,29 @@ body:has(.qinglan-glass)
     background transparent !important
 
 // app wallpaper: fixed layer under all UI (negative z inside the wrapper's stacking context)
+// When wallpaper is set, clear Settings → terminal background text/image (or the
+// built-in watermark / text mode) so it does not stack on top of the app wallpaper.
 .has-wallpaper
   position relative
   z-index 0
   background transparent !important
+  // Let the app wallpaper show through the main terminal/session area
+  .sessions
+  .session-wrap
+  .terms-box
+  .term-wrap
+  .term-sftp-box
+  .layout-wrap
+  .layout-item
+  .web-session-wrap
+  .no-session
+    background transparent !important
+  .xterm
+  .xterm-viewport
+  .xterm-screen
+    background transparent !important
+    background-color transparent !important
+
 .app-wallpaper
   position fixed
   inset 0

@@ -115,11 +115,19 @@ export const themeMixin = {
   },
 
   getRendererThemeConfig (themeConfig = this.props.themeConfig) {
-    return createRendererThemeConfig(
+    const rendererTheme = createRendererThemeConfig(
       deepCopy(themeConfig),
       this.props.config.rendererType,
       this.getVisibleTerminalBackground()
     )
+    // App wallpaper must show through xterm's canvas/WebGL clear colour.
+    // DOM mode is already rgba(0,0,0,0); WebGL normally uses opaque --main.
+    const wallpaperPath = this.props.config?.appWallpaperPath ||
+      window.store?.config?.appWallpaperPath
+    if (wallpaperPath) {
+      rendererTheme.background = 'rgba(0,0,0,0)'
+    }
+    return rendererTheme
   },
 
   /**
@@ -153,7 +161,7 @@ export const themeMixin = {
   /**
    * xterm computes its DOM selection colour as blend(theme.background,
    * selectionBackground). The terminal background is forced transparent
-   * (rgba(0,0,0,0)) so electerm's own CSS background / image shows through,
+   * (rgba(0,0,0,0)) so the app CSS background / wallpaper / image shows through,
    * which makes the blend run over transparent-black. Recompute the selection
    * colours over the real visible background, from the *configured* theme
    * colours — xterm's internal selectionBackgroundTransparent forces opaque

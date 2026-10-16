@@ -472,12 +472,17 @@ export default class SettingCommon extends Component {
         {
           isWebApp
             ? null
-            : this.renderNumber('opacity', {
-              step: 0.05,
-              min: 0,
-              max: 1,
-              cls: 'opacity'
-            }, e('opacity'))
+            : (
+              <div>
+                {this.renderNumber('opacity', {
+                  step: 0.05,
+                  min: 0,
+                  max: 1,
+                  cls: 'opacity'
+                }, e('opacity'))}
+                <div className='pd1b'>窗口透明度可调，可透出桌面</div>
+              </div>
+              )
         }
 
         <div className='pd2b'>
