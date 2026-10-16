@@ -2,7 +2,7 @@
 
 [简体中文](./README.md)
 
-Personal portable SSH / SFTP terminal. Private fork of [electerm](https://github.com/electerm/electerm) (**MIT**). Not for public redistribution.
+Personal portable SSH / SFTP terminal. A fork of [electerm](https://github.com/electerm/electerm) (**MIT**).
 
 ## Attribution & license
 
@@ -55,7 +55,7 @@ Equivalent steps: `npm run b` → `npm run pb` → `node src/build/bin/build-win
 
 ### Windows SmartScreen
 
-Unsigned builds may be blocked: More info → Run anyway. Only run builds you produced or from this private repo’s CI.
+Unsigned builds may be blocked: More info → Run anyway. Only run builds you produced or from this repo’s CI.
 
 ## SSH key safety
 

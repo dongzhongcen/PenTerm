@@ -2,7 +2,7 @@
 
 [English](./README.en.md)
 
-个人自用的便携 SSH / SFTP 终端，基于开源项目 [electerm](https://github.com/electerm/electerm)（**MIT**）私有 fork，**不对外发布**。
+个人自用的便携 SSH / SFTP 终端，基于开源项目 [electerm](https://github.com/electerm/electerm)（**MIT**）的 fork。
 
 ## 致谢与许可
 
@@ -55,7 +55,7 @@ npm run build-win-portable
 
 ### Windows SmartScreen
 
-未签名的便携包可能被 SmartScreen 拦截：点「更多信息」→「仍要运行」。仅运行自己构建或本私有仓库 CI 产物。
+未签名的便携包可能被 SmartScreen 拦截：点「更多信息」→「仍要运行」。仅运行自己构建或本仓库 CI 产物。
 
 ## 密钥安全建议
 
