@@ -320,7 +320,10 @@ const fsExport = Object.assign(
     writeCustom,
     openCustom,
     closeCustom,
-    statCustom
+    statCustom,
+    importWallpaper: (...args) => require('./wallpaper').importWallpaper(...args),
+    readWallpaperAsBase64: (...args) => require('./wallpaper').readWallpaperAsBase64(...args),
+    removeWallpaper: (...args) => require('./wallpaper').removeWallpaper(...args)
   },
   {
     readdirAsync: (_path) => {
