@@ -1,21 +1,38 @@
 /**
  * app wallpaper storage: images are copied into <data dir>/wallpaper/<hash>.<ext>
  * and referenced by file name only, so a portable folder can be moved freely.
+ *
+ * Must NOT require electron / app-props: this module is loaded from the forked
+ * Node server child (via fs.js), where `electron` is not resolvable.
  */
 const fss = require('fs/promises')
-const { resolve, extname, basename } = require('path')
+const { existsSync } = require('fs')
+const { resolve, dirname, extname, basename } = require('path')
 const crypto = require('crypto')
 
 const allowedExt = ['.png', '.jpg', '.jpeg', '.webp', '.gif', '.bmp', '.avif']
 
-function getAppPath () {
-  // lazy: avoid requiring electron before the main process is ready
-  return require('../common/app-props').appPath
+function resolveDataPath () {
+  if (process.env.DATA_PATH) {
+    return process.env.DATA_PATH
+  }
+  const exeDir = dirname(process.execPath)
+  const portableElecterm = resolve(exeDir, 'electerm')
+  if (existsSync(portableElecterm)) {
+    return portableElecterm
+  }
+  const portablePenterm = resolve(exeDir, 'penterm')
+  if (existsSync(portablePenterm)) {
+    return portablePenterm
+  }
+  return resolve(
+    process.env.APPDATA || process.env.HOME || exeDir,
+    'electerm'
+  )
 }
 
 function wallpaperDir () {
-  const dataPath = process.env.DATA_PATH || resolve(getAppPath(), 'electerm')
-  return resolve(dataPath, 'wallpaper')
+  return resolve(resolveDataPath(), 'wallpaper')
 }
 
 // only plain file names produced by importWallpaper are accepted
@@ -58,6 +75,7 @@ async function removeWallpaper (name) {
 
 module.exports = {
   wallpaperDir,
+  resolveDataPath,
   safeName,
   importWallpaper,
   readWallpaperAsBase64,
