@@ -78,6 +78,23 @@ Built-in Qinglan theme: deep teal/navy UI and terminal palette, clean cyan accen
 
 The background is a bundled static CSS gradient layer (no video, no third-party images). Theme/background changes apply at runtime; no rebuild needed for selecting them. Rebuild only if you changed source and need a new portable package.
 
+## Connection Center
+
+Click the Connection Center (cluster) icon in the left icon bar:
+
+- Left: group tree – All, Starred, Recent, Frequent, then your bookmark groups with counts.
+- Right: bookmark table – star toggle, OS icon, name, host with copy button, info tags, and Connect / Edit / More (duplicate, delete).
+- Search box filters by name or host (e.g. `192.0.2.10`).
+- Connect behaves exactly like clicking the bookmark in the bookmark list; Recent/Frequent come from connection history, stars are stored locally.
+
+### Qinglan glass effect
+
+With the Qinglan theme, sidebar, tab bar, setting panel and Connection Center become translucent frosted glass over the Qinglan gradient. Toggle "Glass effect for Qinglan theme" in Settings → Common (on by default).
+
+### App wallpaper
+
+Settings → Common lets you pick a local image as the background of the whole UI, with blur and dim sliders. With the Qinglan glass effect the panels blur over your picture. The image is copied into the app data folder (moves with the portable folder); Clear deletes the copy and returns to the Qinglan gradient.
+
 ## Develop
 
 ```bash

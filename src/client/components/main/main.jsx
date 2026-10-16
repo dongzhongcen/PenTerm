@@ -8,6 +8,7 @@ import SettingModal from '../setting-panel/setting-modal'
 import TextEditor from '../text-editor/text-editor-entry'
 import Sidebar from '../sidebar'
 import CssOverwrite from '../bg/css-overwrite'
+import AppWallpaper from '../bg/app-wallpaper'
 import UiTheme from './ui-theme'
 import TitleBarOverlay from './title-bar-overlay'
 import CustomCss from '../bg/custom-css.jsx'
@@ -53,6 +54,7 @@ import LazyBoundary from '../common/lazy-boundary'
 import { isRemoteMonitorBarVisible } from '../remote-monitor/visibility'
 import '../../common/fs.js'
 import './term-fullscreen.styl'
+import './qinglan-glass.styl'
 
 const Resolutions = lazy(() => import('../rdp/resolution-edit'))
 const InfoModal = lazy(() => import('../sidebar/info-modal.jsx'))
@@ -176,7 +178,10 @@ export default auto(function Index (props) {
     'is-mobile': store.isMobile,
     'is-desktop': !store.isMobile,
     'is-touch-device': store.isTouchDevice,
-    'remote-monitor-bar-on': remoteMonitorBarVisible
+    'remote-monitor-bar-on': remoteMonitorBarVisible,
+    // glass panels over the qinglan gradient (setting: qinglanGlass)
+    'has-wallpaper': !!config.appWallpaperPath,
+    'qinglan-glass': config.theme === 'qinglan' && config.qinglanGlass !== false
   })
   const ext1 = {
     className: cls,
@@ -307,6 +312,11 @@ export default auto(function Index (props) {
       theme={uiThemeConfig}
     >
       <div {...ext1}>
+        <AppWallpaper
+          path={config.appWallpaperPath}
+          blur={config.appWallpaperBlur}
+          dim={config.appWallpaperDim}
+        />
         <InputContextMenu />
         <ShortcutControl config={config} />
         <CssOverwrite

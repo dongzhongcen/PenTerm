@@ -1,9 +1,10 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import {
   InfoCircleOutlined,
   UpCircleOutlined,
   AimOutlined,
-  MenuFoldOutlined
+  MenuFoldOutlined,
+  ClusterOutlined
 } from '@ant-design/icons'
 import { Tooltip } from 'antd'
 import SideBarPanel from './sidebar-panel'
@@ -17,6 +18,8 @@ import SidePanel from './side-panel'
 import LeftSidebarIcons from './left-sidebar-icons'
 import TransferList from './transfer-list'
 import hasActiveInput from '../../common/has-active-input'
+import ConnectionCenter from '../connection-center/connection-center'
+import ccT from '../connection-center/i18n'
 import './sidebar.styl'
 
 const e = window.translate
@@ -48,6 +51,7 @@ export default function Sidebar (props) {
   } = props
 
   const { store } = window
+  const [ccOpen, setCcOpen] = useState(false)
 
   // pinned is desktop-only, like the right panel's: on mobile the panel spans
   // the viewport and there is no pin control to unpin it, so a pin persisted
@@ -171,6 +175,15 @@ export default function Sidebar (props) {
           isSyncingSetting={isSyncingSetting}
           widgetInstancesLength={widgetInstancesLength}
         />
+        <SideIcon
+          title={ccT('title')}
+          active={ccOpen}
+        >
+          <ClusterOutlined
+            className='iblock font20 control-icon open-connection-center-icon'
+            onClick={() => setCcOpen(true)}
+          />
+        </SideIcon>
         <TransferList {...transferProps} />
         <SideIcon
           title={e('about')}
@@ -236,6 +249,10 @@ export default function Sidebar (props) {
           isMobile={isMobile}
         />
       </SidePanel>
+      <ConnectionCenter
+        open={ccOpen}
+        onClose={() => setCcOpen(false)}
+      />
     </div>
   )
 }

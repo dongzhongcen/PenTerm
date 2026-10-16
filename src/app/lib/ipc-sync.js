@@ -142,7 +142,10 @@ module.exports = {
         'openCustom',
         'closeCustom',
         'writeCustom',
-        'getFolderSize'
+        'getFolderSize',
+        'importWallpaper',
+        'readWallpaperAsBase64',
+        'removeWallpaper'
       ]
     }
   }

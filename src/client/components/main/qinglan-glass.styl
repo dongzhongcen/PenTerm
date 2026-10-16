@@ -1,0 +1,52 @@
+// Glass panels for the qinglan theme. Only active when the root wrapper has
+// .qinglan-glass (theme === 'qinglan' and setting qinglanGlass on).
+// Panels stay mostly opaque so text keeps good contrast.
+glass-bg = rgba(8, 36, 48, 0.62)
+glass-bg-strong = rgba(8, 36, 48, 0.78)
+glass-border = rgba(120, 220, 230, 0.16)
+
+.qinglan-glass
+  background linear-gradient(165deg, #061820 0%, #0a2a38 28%, #0d4a5c 58%, #0a6a78 82%, #1a8a9a 100%)
+  .sidebar
+  .sidebar-panel
+  .tabs
+  .main-footer
+    background glass-bg !important
+    backdrop-filter blur(14px) saturate(140%)
+    border-color glass-border
+
+body:has(.qinglan-glass)
+  .setting-wrap
+  .connection-center-modal .ant-modal-content
+  .connection-center-modal .ant-modal-header
+    background glass-bg-strong !important
+    backdrop-filter blur(18px) saturate(140%)
+  .connection-center-modal .ant-modal-content
+    border 1px solid glass-border
+  .connection-center-modal .ant-table
+  .connection-center-modal .ant-table-thead > tr > th
+  .connection-center-modal .ant-table-tbody > tr > td
+    background transparent !important
+
+// app wallpaper: fixed layer under all UI (negative z inside the wrapper's stacking context)
+.has-wallpaper
+  position relative
+  z-index 0
+  background transparent !important
+.app-wallpaper
+  position fixed
+  inset 0
+  z-index -1
+  overflow hidden
+  pointer-events none
+.app-wallpaper-img
+  position absolute
+  inset 0
+  background-size cover
+  background-position center
+.app-wallpaper-dim
+  position absolute
+  inset 0
+.app-wallpaper-path
+  opacity 0.7
+  word-break break-all
