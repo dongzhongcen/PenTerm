@@ -36,6 +36,15 @@ module.exports = (config, env, sysLocale) => {
   // set below from config, so an inherited value cannot contradict it
   delete cleanEnv.ELECTERM_DEBUG
 
+  // Server child is plain Node (no electron). Pass the real data dir so
+  // modules like wallpaper.js can resolve storage without requiring electron.
+  if (!cleanEnv.DATA_PATH) {
+    cleanEnv.DATA_PATH = resolve(
+      require('../common/app-props').appPath,
+      'electerm'
+    )
+  }
+
   // start server
   const child = fork(resolve(__dirname, './server.js'), {
     env: Object.assign(
